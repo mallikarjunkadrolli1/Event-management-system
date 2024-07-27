@@ -1,7 +1,7 @@
 from django import forms
 from betterforms.multiform import MultiModelForm
 
-from .models import Event, EventImage, EventAgenda
+from .models import Event, EventImage, EventAgenda,RegisterEvent
 
 
 class EventForm(forms.ModelForm):
@@ -44,3 +44,8 @@ class EventCreateMultiForm(MultiModelForm):
         'event_image': EventImageForm,
         'event_agenda': EventAgendaForm,
     }
+
+class EventRegestration(forms.ModelForm):
+    class Meta:
+        model=RegisterEvent
+        fields='__all__'

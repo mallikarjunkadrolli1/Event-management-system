@@ -25,8 +25,11 @@ from .views import (
     search_event_category,
     search_event,
     create_event,
+    register_event,
+    participantlist
+    
 )
-
+from . import views
 urlpatterns = [
     path('category-list/', EventCategoryListView.as_view(), name='event-category-list'),
     path('create-category/', EventCategoryCreateView.as_view(), name='create-event-category'),
@@ -52,4 +55,6 @@ urlpatterns = [
     path('search_category/', search_event_category, name='search-event-category'),
     path('search_event/', search_event, name='search-event'),
     path('create/', create_event, name='create'),
+    path('register/', register_event, name='registerevent'),
+     path('participantlist/', participantlist.as_view(), name='participant-list'),
 ]

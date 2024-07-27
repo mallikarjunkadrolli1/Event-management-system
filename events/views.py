@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.shortcuts import HttpResponse
 from .models import (
     EventCategory,
     Event,
@@ -20,10 +20,11 @@ from .models import (
     EventUserWishList,
     UserCoin,
     EventImage,
-    EventAgenda
+    EventAgenda,
+    RegisterEvent
 
 )
-from .forms import EventForm, EventImageForm, EventAgendaForm, EventCreateMultiForm
+from .forms import EventForm, EventImageForm, EventAgendaForm, EventCreateMultiForm, EventRegestration
 
 
 # Event category list view
@@ -270,3 +271,26 @@ def search_event(request):
        }
        return render(request, 'events/event_list.html', context)
     return render(request, 'events/event_list.html')
+
+def register_event(request):
+    if request.method == 'POST':
+        eventform = EventRegestration(request.POST)
+        if eventform.is_valid():
+            eventform.save()
+            return redirect("/sucess")
+    else:
+        eventform = EventRegestration()
+
+    return render(request, "register.html", {'eventform': eventform})
+
+# def participantlist(request):
+#     return render(request,"participantlist.html")
+# def participantlist(request):
+#     return render(request,"participantlist.html")
+
+class participantlist(LoginRequiredMixin, ListView):
+    login_url = 'login'
+    model = RegisterEvent
+    template_name = 'participantlist.html'
+    context_object_name = 'event_category'
+

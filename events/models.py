@@ -186,7 +186,7 @@ class UserCoin(models.Model):
         ('disabled', 'Disabled'),
         ('active', 'Active'),
         ('deleted', 'Deleted'),
-        ('blocked', 'Blocked'),
+        ('blocked', 'Absent'),
         ('completed', 'Completed'),
     )
     status = models.CharField(choices=status_choice, max_length=10)
@@ -197,11 +197,13 @@ class UserCoin(models.Model):
     def get_absolute_url(self):
         return reverse('user-mark')
 
-
-
-
-
-
-
-
+class RegisterEvent(models.Model):
+    name=models.CharField(max_length=50)
+    usn=models.CharField(max_length=20)
+    year=models.IntegerField()
+    sem=models.IntegerField()
+    sec=models.CharField(max_length=3)
+    event=models.ForeignKey(Event,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.usn
 
