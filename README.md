@@ -12,3 +12,6 @@
 
 ## Preview
 
+![home page event](https://github.com/user-attachments/assets/2aa19824-521b-48ce-b5fc-ef637564e6d7)
+![event page](https://github.com/user-attachments/assets/e8357030-666e-47da-b4a9-fd02f8523945)
+![register event](https://github.com/user-attachments/assets/b2dd8064-6324-4464-b24f-ff68482a0681)
